@@ -1,21 +1,21 @@
 <template>
   <div class="body">
-    <p class="header"><strong>{{title}}</strong></p>
+    <p class="title-header"><strong>{{title}}</strong></p>
     <div class="form">
       <div class="form-item">
-        <label>First Name:</label>
+        <label class="first-label">First Name:</label>
         <br />
         <input type="text" class="userFirstname" v-model="userFirstname"/>
         <br />
       </div>
       <div class="form-item">
-        <label>Last Name:</label> 
+        <label class="second-label">Last Name:</label> 
         <br />
         <input type="text" class="userLastname"  v-model="userLastname"/>
         <br />
       </div>
       <div class="form-item">
-        <label>Phone:</label>
+        <label class="third-label">Phone Number:</label>
         <br />
         <input type="number" class="userPhone"  v-model="userPhone"/>
         <br />
@@ -23,7 +23,7 @@
       <button class="submitButton" v-on:click="submit">{{submitButton}}</button>
     </div>
     <div class="table">
-      <p class="header"><strong>Contact List</strong></p>
+      <p class="table-header"><strong>Contact List</strong></p>
       <table id="phoneBookItems" class="informationTable">
         <!-- items should go here -->
           <thead>
@@ -34,10 +34,10 @@
             </tr>
           </thead>
            <tbody>
-            <tr v-for="(phoneBookRow,i) in phoneBookRows" :key="i">
-              <td> {{phoneBookRow.firstName}} </td>
-              <td> {{phoneBookRow.lastName}}  </td>
-              <td> {{phoneBookRow.phoneNumber}}  </td>
+            <tr class="table-tr" v-for="(phoneBookRow,i) in phoneBookRows" :key="i">
+              <td class="first-column"> {{phoneBookRow.firstName}} </td>
+              <td class="second-column"> {{phoneBookRow.lastName}}  </td>
+              <td class="third-column"> {{phoneBookRow.phoneNumber}}  </td>
               <td> 
                 <button @click="editRow(phoneBookRow, i)">Edit</button>
                 <button @click="deleteRow(i)">Delete</button>
@@ -140,12 +140,17 @@
     text-align: center;
   }
 
-  .header {
+  .title-header {
     font-size: 25px;
     margin-left: 10px;
     color: black;
   }
 
+  .table-header {
+    font-size: 25px;
+    margin-left: 10px;
+    color: black;
+  }
   label {
     font-size: 18px;
     font-weight: 500;
